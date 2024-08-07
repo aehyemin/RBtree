@@ -337,15 +337,14 @@ int rbtree_erase(rbtree *t, node_t *p) {//특정 노드를 다른 노드로 대�
 		rbtree_transplant(t, p, p->left);
 	} else { //삭제할 노드가 두 자식을 모두 가진 경우
 		y = p->right;
-		while (y->left != t->nil)
-		{
+		while (y->left != t->nil) {
 		y = y->left;
 		}
 		y_origin_color = y->color;
 		x = y->right;
-		if (y->parent == p)
-		{
+		if (y->parent == p) {
 		x->parent = y;
+		
 		} else {
 			rbtree_transplant(t, y, y->right);
 			y->right = p->right;
